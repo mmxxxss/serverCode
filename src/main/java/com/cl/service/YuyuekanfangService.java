@@ -1,0 +1,32 @@
+package com.cl.service;
+
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.cl.utils.PageUtils;
+import com.cl.entity.YuyuekanfangEntity;
+import java.util.List;
+import java.util.Map;
+import org.apache.ibatis.annotations.Param;
+import com.cl.entity.view.YuyuekanfangView;
+
+
+/**
+ * 预约看房
+ *
+ * @author 
+ * @email 
+ * @date 2025-04-27 16:09:14
+ */
+public interface YuyuekanfangService extends IService<YuyuekanfangEntity> {
+
+    PageUtils queryPage(Map<String, Object> params);
+    
+   	List<YuyuekanfangView> selectListView(QueryWrapper<YuyuekanfangEntity> wrapper);
+   	
+   	YuyuekanfangView selectView(@Param("ew") QueryWrapper<YuyuekanfangEntity> wrapper);
+   	
+   	PageUtils queryPage(Map<String, Object> params,QueryWrapper<YuyuekanfangEntity> wrapper);
+   	
+
+}
+
