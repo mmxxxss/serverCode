@@ -136,14 +136,6 @@ public class FangwuzulinEntity<T> implements Serializable {
 	private String ispay;
 	
 
-	
-	/**
-	 * 是否使用
-	 */
-					
-	private String isUsed;
-	
-
 	@JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
 	@DateTimeFormat
 	private Date addtime;
@@ -328,19 +320,6 @@ public class FangwuzulinEntity<T> implements Serializable {
 	 */
 	public String getIspay() {
 		return ispay;
-	}
-	
-	/**
-	 * 设置：是否使用
-	 */
-	public void setIsUsed(String isUsed) {
-		this.isUsed = isUsed;
-	}
-	/**
-	 * 获取：是否使用
-	 */
-	public String getIsUsed() {
-		return isUsed;
 	}
 
 }
