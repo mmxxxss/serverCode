@@ -137,6 +137,12 @@ public class ZulinhetongEntity<T> implements Serializable {
 	@DateTimeFormat 		
 	private Date hetongriqi;
 	
+	/**
+	 * 是否使用
+	 */
+					
+	private String isUsed;
+	
 
 	@JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
 	@DateTimeFormat
@@ -322,6 +328,19 @@ public class ZulinhetongEntity<T> implements Serializable {
 	 */
 	public Date getHetongriqi() {
 		return hetongriqi;
+	}
+	
+	/**
+	 * 设置：是否使用
+	 */
+	public void setIsUsed(String isUsed) {
+		this.isUsed = isUsed;
+	}
+	/**
+	 * 获取：是否使用
+	 */
+	public String getIsUsed() {
+		return isUsed;
 	}
 
 }

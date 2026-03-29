@@ -23,9 +23,11 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.cl.annotation.IgnoreAuth;
 
 import com.cl.entity.FangwuzulinEntity;
+import com.cl.entity.ZulinhetongEntity;
 import com.cl.entity.view.FangwuzulinView;
 
 import com.cl.service.FangwuzulinService;
+import com.cl.service.ZulinhetongService;
 import com.cl.service.TokenService;
 import com.cl.utils.PageUtils;
 import com.cl.utils.R;
@@ -46,6 +48,9 @@ import java.io.IOException;
 public class FangwuzulinController {
     @Autowired
     private FangwuzulinService fangwuzulinService;
+    
+    @Autowired
+    private ZulinhetongService zulinhetongService;
 
 
 
@@ -177,6 +182,16 @@ public class FangwuzulinController {
     public R update(@RequestBody FangwuzulinEntity fangwuzulin, HttpServletRequest request){
         //ValidatorUtils.validateEntity(fangwuzulin);
         fangwuzulinService.updateById(fangwuzulin);//全部更新
+        
+        // 如果传入了isUsed字段，则更新关联的租赁合同状态
+        if(fangwuzulin.getIsUsed() != null) {
+            // 通过其他方式查找关联的租赁合同，这里假设合同ID与房屋租赁记录ID相同
+            ZulinhetongEntity zulinhetong = new ZulinhetongEntity();
+            zulinhetong.setId(fangwuzulin.getId()); // 假设ID相同
+            zulinhetong.setIsUsed(fangwuzulin.getIsUsed());
+            zulinhetongService.updateById(zulinhetong);
+        }
+        
         return R.ok();
     }
 
